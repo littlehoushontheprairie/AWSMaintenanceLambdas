@@ -17,7 +17,7 @@ exports.handler = (event) => {
 
             s3.getBucketPolicy(
                 {
-                    Bucket: process.env['bucket']
+                    Bucket: process.env.bucket
                 },
                 function (err, data) {
                     if (err) {
@@ -39,7 +39,7 @@ exports.handler = (event) => {
 
                         s3.putBucketPolicy(
                             {
-                                Bucket: process.env['bucket'],
+                                Bucket: process.env.bucket,
                                 Policy: JSON.stringify(policy)
                             },
                             function (err, data) {
@@ -53,7 +53,7 @@ exports.handler = (event) => {
                                         statusCode: 200,
                                         body:
                                             'Successfully updated policy for bucket, ' +
-                                            process.env['bucket']
+                                            process.env.bucket
                                     };
                                 }
                             }

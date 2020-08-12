@@ -16,7 +16,7 @@ exports.handler = (event) => {
             allowIPs = data.Items;
 
             lightsail.getInstance(
-                { instanceName: process.env['instanceName'] },
+                { instanceName: process.env.instanceName },
                 function (err, data) {
                     if (err) {
                         return {
@@ -54,7 +54,7 @@ function updatePorts(listOfPorts, listOfIPs) {
             statusCode: 200,
             body:
                 'Successfully updated ports for instance, ' +
-                process.env['instanceName']
+                process.env.instanceName
         };
     }
 
@@ -62,7 +62,7 @@ function updatePorts(listOfPorts, listOfIPs) {
 
     lightsail.closeInstancePublicPorts(
         {
-            instanceName: process.env['instanceName'],
+            instanceName: process.env.instanceName,
             portInfo: port
         },
         function (err, data) {
@@ -79,7 +79,7 @@ function updatePorts(listOfPorts, listOfIPs) {
 
                 lightsail.openInstancePublicPorts(
                     {
-                        instanceName: process.env['instanceName'],
+                        instanceName: process.env.instanceName,
                         portInfo: port
                     },
                     function (err, data) {
